@@ -1,20 +1,20 @@
 import dotenv from "dotenv"
 import express from "express"
 dotenv.config()
-const port=4000
 const app = express()
 
 
 app.get("/",(req,res)=>{
     res.send("Danish Zehen")
 })
+app.use(express.static('dist'))
 
 app.get("/insta",(req,res)=>{
     res.send('<h2>chud gaye guru</h2>')
 }
 )
 app.get('/api/jokes',(req,res)=>{
-    const joke=[
+    const jokes=[
         {
           "id": 1,
           "title": "Why don't scientists trust atoms?",
@@ -41,7 +41,7 @@ app.get('/api/jokes',(req,res)=>{
           "content": "Nacho cheese!"
         },
       ]
-     res.send(joke)      
+     res.send(jokes)      
 })
 
 app.listen(process.env.PORT || port, ()=>{
